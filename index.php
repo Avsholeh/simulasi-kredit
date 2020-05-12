@@ -10,7 +10,7 @@
 
 <style>
     main, aside {
-        margin: 1rem 10rem 5rem 10rem;
+        margin: 1rem 10rem 1rem 10rem;
     }
     table {
         width: 100%;
