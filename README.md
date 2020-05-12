@@ -10,9 +10,9 @@ Aplikasi ini akan berjalan diatas sekumpulan teknologi & pustaka (library) dibaw
 - NumeralJS v.2.0.6
 
 ## Referensi
-[1] https://koinworks.com/blog/rumus-perhitungan-berbagai-jenis-bunga-pinjaman/
-[2] https://koinworks.com/blog/cara-menghitung-bunga-pinjaman/
-[3] https://www.simulasikredit.com/cara-menghitung-bunga-anuitas/
-[4] https://api.jquery.com/
-[5] https://getbootstrap.com/docs/4.1/getting-started/introduction/
-[6] http://numeraljs.com/ 
+- [1] https://koinworks.com/blog/rumus-perhitungan-berbagai-jenis-bunga-pinjaman/
+- [2] https://koinworks.com/blog/cara-menghitung-bunga-pinjaman/
+- [3] https://www.simulasikredit.com/cara-menghitung-bunga-anuitas/
+- [4] https://api.jquery.com/
+- [5] https://getbootstrap.com/docs/4.1/getting-started/introduction/
+- [6] http://numeraljs.com/ 
