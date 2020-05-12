@@ -10,7 +10,7 @@
 
 <style>
     main, aside {
-        margin: 5rem 10rem 0rem 10rem;
+        margin: 1rem 10rem 5rem 10rem;
     }
     table {
         width: 100%;
@@ -96,6 +96,7 @@
 <script>
     $(document).ready(function() {
         init();
+        const urlRequest = "function.php";
         let jumlahKredit = $('#jumlahKredit');
         let jangkaWaktu = $('#jangkaWaktu');
         let bungaPertahun = $('#bungaPertahun');
@@ -117,18 +118,19 @@
 
         function hitung() {
             $("aside").hide();
+            $("#tableAngsuran tbody tr").remove(); 
             let data = $("#simulasiKredit").serializeArray();
-            $.post("function.php", data, function(e) {
-                $.each(e.data, function(key, val) {
-                    console.log(val);
-                    setInfoPinjaman(
+            $.post(urlRequest, data, function(e) {
+                setInfoPinjaman(
+                        e.metode,
                         jumlahKredit.val(),
                         jangkaWaktu.val(),
                         bungaPertahun.val(),
-                        val.pokok,
-                        val.bunga,
-                        val.jumlahAngsuran
+                        e.data[0].pokok,
+                        e.data[0].bunga,
+                        e.data[0].jumlahAngsuran
                     );
+                $.each(e.data, function(key, val) {
                     setInfoTable(
                         val.no,
                         val.pokok,
@@ -144,9 +146,13 @@
         function ulangi() {
             $("aside").hide();
             jumlahKredit.val("");
+            jumlahKredit.val("");
+            jangkaWaktu.val("");
+            bungaPertahun.val("");
         }
 
         function setInfoPinjaman(
+            metode,
             totalPinjaman,
             lamaPinjaman,
             bunga,
@@ -154,12 +160,38 @@
             angBungaPerbulan,
             totalAngsuranPerbulan
         ) {
-            $("#resultTotalPinjaman").text(rupiah_format(totalPinjaman));
-            $("#resultLamaPinjaman").text(lamaPinjaman);
-            $("#resultBungaPertahun").text(bunga_format(bunga));
-            $("#resultAngPokokBulan").text(rupiah_format(angPokokPerbulan));
-            $("#resultAngBungaBulan").text(rupiah_format(angBungaPerbulan));
-            $("#resultAngBulan").text(rupiah_format(totalAngsuranPerbulan));
+            let $totalPinjaman = $("#resultTotalPinjaman");
+            let $lamaPinjaman = $("#resultLamaPinjaman");
+            let $bunga = $("#resultBungaPertahun");
+            let $angPokok = $("#resultAngPokokBulan");
+            let $angBunga = $("#resultAngBungaBulan");
+            let $ang = $("#resultAngBulan");
+
+            if (metode == 1) {
+                
+                $totalPinjaman.text(rupiah_format(totalPinjaman));
+                $lamaPinjaman.text(lamaPinjaman);
+                $bunga.text(bunga_format(bunga));
+
+                $angPokok.parent().show();
+                $angBunga.parent().show();
+                $ang.parent().show();
+
+                $angPokok.text(rupiah_format(angPokokPerbulan));
+                $angBunga.text(rupiah_format(angBungaPerbulan));
+                $ang.text(rupiah_format(totalAngsuranPerbulan));
+
+            } else {
+
+                $totalPinjaman.text(rupiah_format(totalPinjaman));
+                $lamaPinjaman.text(lamaPinjaman);
+                $bunga.text(bunga_format(bunga));
+
+                $angPokok.parent().hide();
+                $angBunga.parent().hide();
+                $ang.parent().hide();
+
+            }
         }
 
         function setInfoTable(
@@ -178,7 +210,7 @@
                     <td>${rupiah_format(sisaPinjaman)}</td>
                 </tr>
             `;
-            $('#tableAngsuran > tbody:last-child').append(markup);
+            $("#tableAngsuran > tbody:last-child").append(markup);
         }
 
         function rupiah_format(number) {
@@ -191,10 +223,4 @@
 
     }); // eof document.ready
 </script>
-<!-- <tr>
-    <th scope="row">1</th>
-    <td>Mark</td>
-    <td>Otto</td>
-    <td>@mdo</td>
-</tr> -->
 </html>
