@@ -121,6 +121,7 @@
             $("#tableAngsuran tbody tr").remove(); 
             let data = $("#simulasiKredit").serializeArray();
             $.post(urlRequest, data, function(e) {
+                console.log(e);
                 setInfoPinjaman(
                         e.metode,
                         jumlahKredit.val(),
@@ -129,7 +130,7 @@
                         e.data[0].pokok,
                         e.data[0].bunga,
                         e.data[0].jumlahAngsuran
-                    );
+                );
                 $.each(e.data, function(key, val) {
                     setInfoTable(
                         val.no,
