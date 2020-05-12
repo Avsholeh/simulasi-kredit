@@ -1,9 +1,6 @@
 # Simulasi Kredit
 Aplikasi Simulasi Kredit dengan perhitungan suku bunga flat, efektif dan anuitas.
 
-## Screenshoot
-![Image Preview 1](https://github.com/Avsholeh/simulasi-kredit/blob/master/assets/preview1.PNG)
-![Image Preview 1](https://github.com/Avsholeh/simulasi-kredit/blob/master/assets/preview1.PNG)
 
 ## Dependensi
 Aplikasi ini telah diuji & berjalan pada sekumpulan teknologi & pustaka (library) dibawah ini:
@@ -12,6 +9,12 @@ Aplikasi ini telah diuji & berjalan pada sekumpulan teknologi & pustaka (library
 - Bootstrap v.4.4.1
 - jQuery v.3.4.1
 - NumeralJS v.2.0.6
+
+
+## Screenshoot
+![Image Preview 1](https://github.com/Avsholeh/simulasi-kredit/blob/master/assets/preview1.PNG)
+![Image Preview 1](https://github.com/Avsholeh/simulasi-kredit/blob/master/assets/preview2.PNG)
+
 
 ## Referensi
 - [1] https://koinworks.com/blog/rumus-perhitungan-berbagai-jenis-bunga-pinjaman/
