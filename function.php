@@ -73,7 +73,7 @@ function metode_efektif($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
     $pokok = $jumlahPinjaman / $jangkaWaktu;
     
     for($i = 0; $i < $jangkaWaktu; $i++) {
-        $bunga = $sisaPinjaman * $sukuBunga * (HARI_BULAN / HARI_TAHUN);
+        $bunga = $sisaPinjaman * ($sukuBunga/100) * (HARI_BULAN / HARI_TAHUN);
         $jumlahAngsuran = ( $pokok + $bunga );
         $sisaPinjaman -= $pokok;
         array_push($data, [
