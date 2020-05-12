@@ -13,8 +13,7 @@ Aplikasi ini telah diuji & berjalan pada sekumpulan teknologi & pustaka (library
 
 
 ## Screenshoot
-![Image Preview 1](https://github.com/Avsholeh/simulasi-kredit/blob/master/assets/preview1.PNG)
-![Image Preview 1](https://github.com/Avsholeh/simulasi-kredit/blob/master/assets/preview2.PNG)
+![Image Preview 1](https://github.com/Avsholeh/simulasi-kredit/blob/master/assets/preview.PNG)
 
 
 ## Referensi
