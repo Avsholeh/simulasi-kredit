@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <title>Simulasi Kredit</title>
+    <title>Simulasi Kredit - PT. BPR Karimun Sejahtera</title>
 </head>
 
 <style>
-    main {
-        margin: 10rem 10rem 20rem 10rem;
+    main, aside {
+        margin: 5rem 10rem 0rem 10rem;
     }
 </style>
 
@@ -18,7 +18,7 @@
 
     <main>
         <form id="simulasiKredit">
-            <h1 class="h3 mb-3">Simulasi Kredit</h1>
+            <h1 class="h1 mb-3">Simulasi Kredit</h1>
 
             <div class="form-group">
                 <label for="jumlahKredit">Jumlah Kredit: </label>
@@ -59,11 +59,24 @@
         </form>
     </main>
 
+    <aside>
+        <hr>
+        <h3 class="h3 mb-3">Pinjaman Anda</h1>
+        <p>Total Pinjaman : <span id="resultTotalPinjaman">Rp.1000.000.00</span></p>
+        <p>Lama Pinjaman :	<span id="resultLamaPinjaman">24 Bulan</span></p>
+        <p>Bunga Pertahun :	<span id="resultBungaPertahun">11 %</span></p>
+        <p>Angsuran Pokok Perbulan : <span id="resultAngPokokBulan">Rp. 4,166,667</span></p>
+        <p>Angsuran Bunga Perbulan : <span id="resultBungaBulan">Rp. 916,667</span></p>
+        <p>Total angsuran per bulan	: <span id="resultAngBulan">Rp. 5,083,333</span></p>
+        <hr>
+    </aside>
+
 </body>
 <script src="assets/jquery/jquery-3.5.1.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function() {
+        init();
         let jumlahKredit = $('#jumlahKredit');
         let jangkaWaktu = $('#jangkaWaktu');
         let bungaPertahun = $('#bungaPertahun');
@@ -71,12 +84,16 @@
 
         $("#btnKalkulasi").click(function(e) {
             e.preventDefault();
-            console.log(metode.val());
         });
 
         $("#btnUlangi").click(function(e) {
             e.preventDefault();
+            ulangi();
         });
+
+        function init() {
+            $("aside").hide();
+        }
 
         function hitung(metode) {
             if (metode == "Anuitas") {
@@ -86,6 +103,11 @@
             } else {
                 // hitung flat
             }
+        }
+
+        function ulangi() {
+            $("aside").hide();
+            jumlahKredit.val("");
         }
     });
 </script>
