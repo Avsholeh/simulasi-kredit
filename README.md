@@ -2,7 +2,7 @@
 Aplikasi Simulasi Kredit dengan perhitungan suku bunga flat, efektif dan anuitas.
 
 ## Dependensi
-Aplikasi ini akan berjalan diatas sekumpulan teknologi & pustaka (library) dibawah ini:
+Aplikasi ini telah diuji & berjalan pada sekumpulan teknologi & pustaka (library) dibawah ini:
 
 - PHP v.7.2.19
 - Bootstrap v.4.4.1
