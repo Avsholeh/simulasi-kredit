@@ -5,26 +5,54 @@ define("HARI_BULAN", 30);
 define("HARI_TAHUN", 360);
 define("BULAN_TAHUN", 12);
 
-// if (isset($_POST['param'])) {
+if (isset($_POST['jumlahKredit']) && 
+    $_POST['jangkaWaktu'] &&
+    $_POST['bungaPertahun'] &&
+    $_POST['metode']) {
     
-// } else {
+    $_metode = $_POST['metode'];
+    $_jumlahKredit = $_POST['jumlahKredit'];
+    $_jangkaWaktu = $_POST['jangkaWaktu'];
+    $_bungaPertahun = $_POST['bungaPertahun'];
 
-//     response("param");
+    switch ($_metode) {
+        case 1:
+            $hasil = metode_flat($_jumlahKredit, $_jangkaWaktu, $_bungaPertahun);
+            response($_metode, $hasil);
+            break;
+        case 2:
+            $hasil = metode_efektif($_jumlahKredit, $_jangkaWaktu, $_bungaPertahun);
+            response($_metode, $hasil);
+            break;
+        case 3:
+            $hasil = metode_anuitas($_jumlahKredit, $_jangkaWaktu, $_bungaPertahun);
+            response($_metode, $hasil);
+            break;
+        default:
+            response("Invalid request.");
+            break;
+        }
+    
 
-// }
+} else {
 
-function response($param){
-    $response['param'] = $param;
-    $json_response = json_encode($response);
+    response("Invalid request.");
+
+}
+
+function response($metode, $data){
+    $res['metode'] = $metode;
+    $res['data'] = $data;
+    $json_response = json_encode($res);
     echo $json_response;
 }
 
 function metode_flat($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
     $data = [];
     $pokok = $jumlahPinjaman / $jangkaWaktu;
-    $bunga = ($jumlahPinjaman * $sukuBunga) / BULAN_TAHUN;
+    $bunga = ($jumlahPinjaman * ($sukuBunga/100)) / $jangkaWaktu;
     $sisaPinjaman = $jumlahPinjaman;
-    $jumlahAngsuran = ( $pokok + $bunga );
+    $jumlahAngsuran = $pokok + $bunga;
 
     for($i = 0; $i < $jangkaWaktu; $i++) {
         $sisaPinjaman -= $pokok;
