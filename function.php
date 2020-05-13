@@ -51,7 +51,7 @@ function response($data, $metode=0){
 }
 
 function metode_flat($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
-    $data = [];
+    $angsuran = [];
     $sukuBunga = $sukuBunga / 100;
     $pokok = $jumlahPinjaman / $jangkaWaktu;
     $bunga = $jumlahPinjaman * $sukuBunga / $jangkaWaktu;
@@ -60,7 +60,7 @@ function metode_flat($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
 
     for($i = 0; $i < $jangkaWaktu; $i++) {
         $sisaPinjaman -= $pokok;
-        array_push($data, [
+        array_push($angsuran, [
             "no"                => $i + 1,
             "pokok"             => round($pokok),
             "bunga"             => round($bunga),
@@ -68,11 +68,11 @@ function metode_flat($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
             "sisaPinjaman"      => round($sisaPinjaman)
         ]);
     }
-    return $data;
+    return $angsuran;
 }
 
 function metode_efektif($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
-    $data = [];
+    $angsuran = [];
     $sukuBunga = $sukuBunga / 100;
     $sisaPinjaman = $jumlahPinjaman;
     $pokok = $jumlahPinjaman / $jangkaWaktu;
@@ -81,7 +81,7 @@ function metode_efektif($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
         $bunga = $sisaPinjaman * $sukuBunga * (HARI_BULAN / HARI_TAHUN);
         $jumlahAngsuran = ( $pokok + $bunga );
         $sisaPinjaman -= $pokok;
-        array_push($data, [
+        array_push($angsuran, [
             "no"                => $i + 1,
             "pokok"             => round($pokok),
             "bunga"             => round($bunga),
@@ -89,11 +89,11 @@ function metode_efektif($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
             "sisaPinjaman"      => round($sisaPinjaman)
         ]);
     }
-    return $data;
+    return $angsuran;
 }
 
 function metode_anuitas($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
-    $data = [];
+    $angsuran = [];
     $sisaPinjaman = $jumlahPinjaman;
     $sukuBunga = $sukuBunga / 100;
     $jumlahAngsuran = $jumlahPinjaman * ( ($sukuBunga) / BULAN_TAHUN ) /
@@ -104,7 +104,7 @@ function metode_anuitas($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
         $pokok = $jumlahAngsuran - $bunga;
         $sisaPinjaman -= $pokok;
 
-        array_push($data, [
+        array_push($angsuran, [
             "no"                => $i + 1,
             "pokok"             => round($pokok),
             "bunga"             => round($bunga),
@@ -112,7 +112,7 @@ function metode_anuitas($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
             "sisaPinjaman"      => round($sisaPinjaman)
         ]);
     }
-    return $data;
+    return $angsuran;
 }
 
 ?>
