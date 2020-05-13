@@ -1,6 +1,10 @@
 <?php
 header("Content-Type:application/json");
 
+include('libs/math_php/vendor/autoload.php');
+
+use MathPHP\Finance;
+
 define("HARI_BULAN", 30);
 define("HARI_TAHUN", 360);
 define("BULAN_TAHUN", 12);
@@ -9,7 +13,7 @@ if (isset($_POST['jumlahKredit']) &&
     $_POST['jangkaWaktu'] &&
     $_POST['bungaPertahun'] &&
     $_POST['metode']) {
-    
+
     $_metode = $_POST['metode'];
     $_jumlahKredit = $_POST['jumlahKredit'];
     $_jangkaWaktu = $_POST['jangkaWaktu'];
@@ -38,10 +42,9 @@ if (isset($_POST['jumlahKredit']) &&
     
 
 } else {
-
     response("Invalid request.");
-
 }
+
 
 function response($data, $metode=0){
     $res['data'] = $data;
@@ -49,6 +52,7 @@ function response($data, $metode=0){
     $json_response = json_encode($res);
     echo $json_response;
 }
+
 
 function metode_flat($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
     $angsuran = [];
@@ -70,6 +74,7 @@ function metode_flat($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
     }
     return $angsuran;
 }
+
 
 function metode_efektif($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
     $angsuran = [];
@@ -94,14 +99,23 @@ function metode_efektif($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
 
 function metode_anuitas($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
     $angsuran = [];
-    $sisaPinjaman = $jumlahPinjaman;
     $sukuBunga = $sukuBunga / 100;
-    $jumlahAngsuran = $jumlahPinjaman * ( ($sukuBunga) / BULAN_TAHUN ) /
-        ( 1 - ( 1 + pow($sukuBunga/12, -($jangkaWaktu/12)) ) );
+    $jumlahAngsuran = Finance::pmt($sukuBunga, $jangkaWaktu, -$jumlahPinjaman);
+    $sisaPinjaman = $jumlahPinjaman;
 
     for($i = 0; $i < $jangkaWaktu; $i++) {
-        $bunga = $sisaPinjaman * $sukuBunga / BULAN_TAHUN;
-        $pokok = $jumlahAngsuran - $bunga;
+        $pokok = Finance::ppmt(
+            $sukuBunga,
+            ( $i + 1 ),
+            $jangkaWaktu,
+            -$jumlahPinjaman
+        );
+        $bunga = Finance::ipmt(
+            $sukuBunga,
+            ( $i + 1 ),
+            $jangkaWaktu,
+            -$jumlahPinjaman
+        );
         $sisaPinjaman -= $pokok;
 
         array_push($angsuran, [

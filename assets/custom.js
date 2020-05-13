@@ -5,7 +5,7 @@ $(document).ready(function() {
     let $jumlahKredit = $('#jumlahKredit');
     let $jangkaWaktu = $('#jangkaWaktu');
     let $bungaPertahun = $('#bungaPertahun');
-    //let $metode = $("#simulasiKredit input[name=metode]:checked");
+    let submited = false;
 
     $("#simulasiKredit").validate({
         rules: {
@@ -20,14 +20,20 @@ $(document).ready(function() {
             bungaPertahun: "Silahkan masukkan bunga."
         },
 
-        submitHandler: function(form) {
+        submitHandler: function() {
             hitung();
+            submited = true;
         }
     });
 
     $("#btnUlangi").click(function(e) {
         e.preventDefault();
         ulangi();
+        submited = false;
+    });
+
+    $("input[name=metode]").change(function() {
+        if (submited) hitung();
     });
 
     function init() {
@@ -73,9 +79,9 @@ $(document).ready(function() {
         total,
         lama,
         bunga,
-        angPokokPerbulan,
-        angBungaPerbulan,
-        totalAngsuranPerbulan
+        angsuranPokok,
+        angsuranBunga,
+        totalAngsuran
     ) {
         let $totalPinjaman = $("#resultTotalPinjaman");
         let $lamaPinjaman = $("#resultLamaPinjaman");
@@ -89,18 +95,18 @@ $(document).ready(function() {
             
             $totalPinjaman.text(rupiah_format(total));
             $lamaPinjaman.text(lama);
-            $bunga.text(bunga_format(bunga));
+            $bunga.text(bunga + " %");
             $flatOnly.show();
 
-            $angPokok.text(rupiah_format(angPokokPerbulan));
-            $angBunga.text(rupiah_format(angBungaPerbulan));
-            $ang.text(rupiah_format(totalAngsuranPerbulan));
+            $angPokok.text(rupiah_format(angsuranPokok));
+            $angBunga.text(rupiah_format(angsuranBunga));
+            $ang.text(rupiah_format(totalAngsuran));
 
         } else {
 
             $totalPinjaman.text(rupiah_format(total));
             $lamaPinjaman.text(lama);
-            $bunga.text(bunga_format(bunga));
+            $bunga.text(bunga + " %");
             $flatOnly.hide();
 
         }
@@ -108,16 +114,16 @@ $(document).ready(function() {
 
     function setInfoTable(
         bulan,
-        pokok,
-        bunga,
+        angsuranpokok,
+        angsuranBunga,
         jumlahAngsuran,
         sisaPinjaman
     ) {
         let markup = `
             <tr>
                 <td>${bulan}</td>
-                <td>${rupiah_format(pokok)}</td>
-                <td>${rupiah_format(bunga)}</td>
+                <td>${rupiah_format(angsuranpokok)}</td>
+                <td>${rupiah_format(angsuranBunga)}</td>
                 <td>${rupiah_format(jumlahAngsuran)}</td>
                 <td>${rupiah_format(sisaPinjaman)}</td>
             </tr>
@@ -127,10 +133,6 @@ $(document).ready(function() {
 
     function rupiah_format(number) {
         return number == 0 ? "Rp. " + 0 : "Rp. " + numeral(number).format('0,0');
-    }
-
-    function bunga_format(number) {
-        return numeral(number).format('0,0') + " %";
     }
 
 }); // eof document.ready

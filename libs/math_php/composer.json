@@ -1,0 +1,1 @@
+{"name":"dummy app","description":"This app is only a dummy for downloading with the option require.","homepage":"https://php-download.com/","type":"project","require":{"markrogoyski/math-php":"^1.1.0.0"}}

@@ -26,19 +26,19 @@
             <div class="form-group">
                 <label for="jumlahKredit">Jumlah Kredit (rupiah): </label>
                 <input type="number" class="form-control" id="jumlahKredit" name="jumlahKredit"
-                    placeholder="Contoh: 150000000">
+                    placeholder="Contoh: 150000000" value="5000000">
             </div>
 
             <div class="form-group">
                 <label for="jangkaWaktu">Jangka Waktu (bulan): </label>
                 <input type="number" class="form-control" id="jangkaWaktu" name="jangkaWaktu"
-                    placeholder="Contoh: 120">
+                    placeholder="Contoh: 120" value="12">
             </div>
 
             <div class="form-group">
                 <label for="bungaPertahun">Bunga Pertahun (%): </label>
                 <input type="number" class="form-control" id="bungaPertahun" name="bungaPertahun"
-                    placeholder="Contoh: 10.5">
+                    placeholder="Contoh: 10.5" value="1.5">
             </div>
 
             <div class="form-group">
@@ -70,35 +70,35 @@
         <h1 class="display-4 mb-3 text-center">Pinjaman Anda</h1>
         
         <div class="row d-flex justify-content-center">
-            <div class="col-3">Total Pinjaman</div>
-            <div class="col-3">: <span id="resultTotalPinjaman"></span></div>
+            <div class="col-4">Total Pinjaman</div>
+            <div class="col-4">: <span id="resultTotalPinjaman"></span></div>
         </div>
 
         <div class="row d-flex justify-content-center">
-            <div class="col-3">Lama Pinjaman</div>
-            <div class="col-3">: <span id="resultLamaPinjaman"></span></div>
+            <div class="col-4">Lama Pinjaman</div>
+            <div class="col-4">: <span id="resultLamaPinjaman"></span></div>
         </div>
 
         <div class="row d-flex justify-content-center">
-            <div class="col-3">Bunga Pertahun</div>
-            <div class="col-3">: <span id="resultBungaPertahun"></span></div>
+            <div class="col-4">Bunga Pertahun</div>
+            <div class="col-4">: <span id="resultBungaPertahun"></span></div>
         </div>
 
         <div class="flatOnly">
 
             <div class="row d-flex justify-content-center">
-                <div class="col-3">Angsuran Pokok Perbulan</div>
-                <div class="col-3">: <span id="resultAngPokokBulan"></span></div>
+                <div class="col-4">Angsuran Pokok Perbulan</div>
+                <div class="col-4">: <span id="resultAngPokokBulan"></span></div>
             </div>
 
             <div class="row d-flex justify-content-center">
-                <div class="col-3">Angsuran Bunga Perbulan</div>
-                <div class="col-3">: <span id="resultAngBungaBulan"></span></div>
+                <div class="col-4">Angsuran Bunga Perbulan</div>
+                <div class="col-4">: <span id="resultAngBungaBulan"></span></div>
             </div>
 
             <div class="row d-flex justify-content-center">
-                <div class="col-3">Total angsuran per bulan</div>
-                <div class="col-3">: <span id="resultAngBulan"></span></div>
+                <div class="col-4">Total angsuran per bulan</div>
+                <div class="col-4">: <span id="resultAngBulan"></span></div>
             </div>
         
         </div>
