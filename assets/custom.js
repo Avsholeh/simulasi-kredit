@@ -1,10 +1,11 @@
 $(document).ready(function() {
     init();
-    const urlRequest = "function.php";
-    let jumlahKredit = $('#jumlahKredit');
-    let jangkaWaktu = $('#jangkaWaktu');
-    let bungaPertahun = $('#bungaPertahun');
-    let metode = $("#simulasiKredit input[name=metode]:checked");
+    const URL_REQUEST = "function.php";
+    
+    let $jumlahKredit = $('#jumlahKredit');
+    let $jangkaWaktu = $('#jangkaWaktu');
+    let $bungaPertahun = $('#bungaPertahun');
+    //let $metode = $("#simulasiKredit input[name=metode]:checked");
 
     $("#simulasiKredit").validate({
         rules: {
@@ -37,12 +38,12 @@ $(document).ready(function() {
         $("aside").hide();
         $("#tableAngsuran tbody tr").remove(); 
         let data = $("#simulasiKredit").serializeArray();
-        $.post(urlRequest, data, function(e) {
+        $.post(URL_REQUEST, data, function(e) {
             setInfoPinjaman(
                     e.metode,
-                    jumlahKredit.val(),
-                    jangkaWaktu.val(),
-                    bungaPertahun.val(),
+                    $jumlahKredit.val(),
+                    $jangkaWaktu.val(),
+                    $bungaPertahun.val(),
                     e.data[0].pokok,
                     e.data[0].bunga,
                     e.data[0].jumlahAngsuran
@@ -62,16 +63,15 @@ $(document).ready(function() {
 
     function ulangi() {
         $("aside").hide();
-        jumlahKredit.val("");
-        jumlahKredit.val("");
-        jangkaWaktu.val("");
-        bungaPertahun.val("");
+        $jumlahKredit.val("");
+        $jangkaWaktu.val("");
+        $bungaPertahun.val("");
     }
 
     function setInfoPinjaman(
         metode,
-        totalPinjaman,
-        lamaPinjaman,
+        total,
+        lama,
         bunga,
         angPokokPerbulan,
         angBungaPerbulan,
@@ -83,16 +83,14 @@ $(document).ready(function() {
         let $angPokok = $("#resultAngPokokBulan");
         let $angBunga = $("#resultAngBungaBulan");
         let $ang = $("#resultAngBulan");
+        let $flatOnly = $(".flatOnly");
 
         if (metode == 1) {
             
-            $totalPinjaman.text(rupiah_format(totalPinjaman));
-            $lamaPinjaman.text(lamaPinjaman);
+            $totalPinjaman.text(rupiah_format(total));
+            $lamaPinjaman.text(lama);
             $bunga.text(bunga_format(bunga));
-
-            $angPokok.parent().show();
-            $angBunga.parent().show();
-            $ang.parent().show();
+            $flatOnly.show();
 
             $angPokok.text(rupiah_format(angPokokPerbulan));
             $angBunga.text(rupiah_format(angBungaPerbulan));
@@ -100,13 +98,10 @@ $(document).ready(function() {
 
         } else {
 
-            $totalPinjaman.text(rupiah_format(totalPinjaman));
-            $lamaPinjaman.text(lamaPinjaman);
+            $totalPinjaman.text(rupiah_format(total));
+            $lamaPinjaman.text(lama);
             $bunga.text(bunga_format(bunga));
-
-            $angPokok.parent().hide();
-            $angBunga.parent().hide();
-            $ang.parent().hide();
+            $flatOnly.hide();
 
         }
     }
