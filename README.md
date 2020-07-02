@@ -12,7 +12,7 @@ Aplikasi ini telah diuji dan berjalan pada sekumpulan teknologi pustaka (library
 - NumeralJS v.2.0.6
 
 
-## Screenshoot
+## Screenshoot (*Prototype)
 ![Image Preview 1](https://github.com/Avsholeh/simulasi-kredit/blob/master/assets/preview.PNG)
 
 
