@@ -9,34 +9,52 @@
 </head>
 
 <style>
-    main, aside {
-        margin: 1rem 10rem 1rem 10rem;
-    }
     table {
         width: 100%;
     }
 </style>
 
 <body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Simulasi Kredit</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Beranda <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tentang</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
     
     <main class="row d-flex justify-content-center">
-        <form class="col-6" id="simulasiKredit">
+        <form class="col-12 col-md-9 pl-5 pr-5" id="simulasiKredit">
             <h1 class="display-3 mb-3 text-center">Simulasi Kredit</h1>
 
             <div class="form-group">
-                <label for="jumlahKredit">Jumlah Kredit (rupiah): </label>
+                <label for="jumlahKredit">Jumlah Kredit <em>(rupiah)</em>: </label>
                 <input type="number" class="form-control" id="jumlahKredit" name="jumlahKredit"
                     placeholder="Contoh: 150000000" value="5000000">
             </div>
 
             <div class="form-group">
-                <label for="jangkaWaktu">Jangka Waktu (bulan): </label>
+                <label for="jangkaWaktu">Jangka Waktu <em>(bulan)</em>: </label>
                 <input type="number" class="form-control" id="jangkaWaktu" name="jangkaWaktu"
                     placeholder="Contoh: 120" value="12">
             </div>
 
             <div class="form-group">
-                <label for="bungaPertahun">Bunga Pertahun (%): </label>
+                <label for="bungaPertahun">Bunga Pertahun <em>(%)</em>: </label>
                 <input type="number" class="form-control" id="bungaPertahun" name="bungaPertahun"
                     placeholder="Contoh: 10.5" value="1.5">
             </div>
