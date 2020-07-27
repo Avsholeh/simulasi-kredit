@@ -129,4 +129,31 @@ function metode_anuitas($jumlahPinjaman, $jangkaWaktu, $sukuBunga) {
     return $angsuran;
 }
 
+
+function metode_floating($jumlahPinjaman, $jangkaWaktu, $sukuBunga, $sbFloating, $bulanFloating) {
+    $angsuran = [];
+    $sukuBunga = $sukuBunga / 100;
+    $sisaPinjaman = $jumlahPinjaman;
+    $pokok = $jumlahPinjaman / $jangkaWaktu;
+    
+    for($i = 0; $i < $jangkaWaktu; $i++) {
+        // looping start from 0 so $bulanFloating should minus 1
+        if ( $jangkaWaktu == ($bulanFloating - 1) ) {
+            $bunga = $sisaPinjaman * $sbFloating * (HARI_BULAN / HARI_TAHUN);
+        }
+        $bunga = $sisaPinjaman * $sukuBunga * (HARI_BULAN / HARI_TAHUN);
+        $jumlahAngsuran = ( $pokok + $bunga );
+        $sisaPinjaman -= $pokok;
+        array_push($angsuran, [
+            "no"                => $i + 1,
+            "pokok"             => round($pokok),
+            "bunga"             => round($bunga),
+            "jumlahAngsuran"    => round($jumlahAngsuran),
+            "sisaPinjaman"      => round($sisaPinjaman)
+        ]);
+    }
+    return $angsuran;
+}
+
+
 ?>
