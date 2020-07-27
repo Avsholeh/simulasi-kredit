@@ -74,6 +74,11 @@
                     <input type="radio" class="form-check-input" value="3" name="metode" id="Anuitas">
                     <label class="form-check-label" for="Anuitas">Anuitas</label>
                 </div>
+
+                <div class="form-check-inline">
+                    <input type="radio" class="form-check-input" value="3" name="metode" id="Floating">
+                    <label class="form-check-label" for="Anuitas">Floating</label>
+                </div>
             </div>
 
             <div class="form-group">
