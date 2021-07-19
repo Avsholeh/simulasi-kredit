@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <title>Simulasi Kredit - PT. BPR Karimun Sejahtera</title>
+    <title>Simulasi Kredit</title>
 </head>
 
 <style>
@@ -73,11 +73,6 @@
                 <div class="form-check-inline">
                     <input type="radio" class="form-check-input" value="3" name="metode" id="Anuitas">
                     <label class="form-check-label" for="Anuitas">Anuitas</label>
-                </div>
-
-                <div class="form-check-inline">
-                    <input type="radio" class="form-check-input" value="3" name="metode" id="Floating">
-                    <label class="form-check-label" for="Anuitas">Floating</label>
                 </div>
             </div>
 
