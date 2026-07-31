@@ -2,6 +2,19 @@
 Aplikasi Simulasi Kredit dengan perhitungan suku bunga flat, efektif dan anuitas.
 
 
+## Parity (Versi Baru)
+
+Versi modern dari Simulasi Kredit sudah tersedia sebagai widget kalkulator kredit: **[Parity](https://github.com/Avsholeh/parity)**.
+
+- Perhitungan bunga flat, efektif, dan anuitas lengkap dengan jadwal amortisasi bulanan
+- 13 tema siap pakai (system, light, dark, cream, mist, blush, sage, slate, midnight, graphite, forest, plum, ember)
+- Dukungan bahasa Indonesia & Inggris (id/en)
+- Tanpa dependensi — cukup load `parity.js` + `parity.css`
+- Mount di halaman mana pun via `Parity('#selector', { ... })`
+
+👉 **[Live demo](https://avsholeh.github.io/parity)**
+
+
 ## Dependensi
 Aplikasi ini telah diuji dan berjalan pada sekumpulan teknologi pustaka (library) dibawah ini:
 
